@@ -9,7 +9,7 @@ apply plugin: "net.serenity-bdd.serenity-gradle-plugin"
 def versionSerenity='3.9.8'
 def versionCucumber='3.9.8'
 def versionApachePoi='5.2.2'
-def versionHealeniumWeb='3.4.4'
+def versionHealeniumWeb='3.5.1'
 
 repositories {
     mavenCentral()
