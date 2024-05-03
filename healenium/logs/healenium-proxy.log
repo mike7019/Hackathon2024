@@ -1,0 +1,16 @@
+2024-05-03 20:05:05.551  INFO 1 - [       main] .e.h.h.HealeniumProxyApplication : Starting HealeniumProxyApplication v1.4.0 using Java 17.0.10 with PID 1 (/hlm-proxy.jar started by root in /) 
+2024-05-03 20:05:12.514  INFO 1 - [       main] .e.h.h.HealeniumProxyApplication : No active profile set, falling back to 1 default profile: "default" 
+2024-05-03 20:05:14.452  INFO 1 - [       main] o.s.b.w.e.t.TomcatWebServer      : Tomcat initialized with port 8085 (http) 
+2024-05-03 20:05:14.473  INFO 1 - [       main] o.a.c.core.StandardService       : Starting service [Tomcat] 
+2024-05-03 20:05:14.505  INFO 1 - [       main] o.a.c.core.StandardEngine        : Starting Servlet engine: [Apache Tomcat/10.1.18] 
+2024-05-03 20:05:14.603  INFO 1 - [       main] o.a.c.c.C.[.[localhost].[/]      : Initializing Spring embedded WebApplicationContext 
+2024-05-03 20:05:14.604  INFO 1 - [       main] rvletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1998 ms 
+2024-05-03 20:05:15.843  INFO 1 - [       main] o.s.b.w.e.t.TomcatWebServer      : Tomcat started on port 8085 (http) with context path '' 
+2024-05-03 20:05:15.882  INFO 1 - [       main] .e.h.h.HealeniumProxyApplication : Started HealeniumProxyApplication in 11.317 seconds (process running for 12.446) 
+2024-05-03 20:15:36.413  INFO 1 - [8085-exec-1] o.a.c.c.C.[.[localhost].[/]      : Initializing Spring DispatcherServlet 'dispatcherServlet' 
+2024-05-03 20:15:36.414  INFO 1 - [8085-exec-1] o.s.w.s.DispatcherServlet        : Initializing Servlet 'dispatcherServlet' 
+2024-05-03 20:15:36.416  INFO 1 - [8085-exec-1] o.s.w.s.DispatcherServlet        : Completed initialization in 1 ms 
+2024-05-03 20:15:36.429  WARN 1 - [8085-exec-1] healenium                        : [Proxy] Using default Selenium by URL: http://selenium-hub:4444/wd/hub 
+2024-05-03 20:15:41.650 ERROR 1 - [8085-exec-1] healenium                        : [Request Handler] Error during handle Proxy Request. Message: java.net.ConnectException, Exception: java.io.UncheckedIOException: java.net.ConnectException 
+2024-05-03 20:15:41.705  WARN 1 - [8085-exec-2] healenium                        : [Proxy] Using default Selenium by URL: http://selenium-hub:4444/wd/hub 
+2024-05-03 20:15:41.708 ERROR 1 - [8085-exec-2] healenium                        : [Request Handler] Error during handle Proxy Request. Message: java.net.ConnectException, Exception: java.io.UncheckedIOException: java.net.ConnectException 
