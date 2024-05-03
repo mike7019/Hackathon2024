@@ -12,20 +12,16 @@ public class DriversFactory {
 
     public static WebDriver createWebDriver(String browser) {
         switch (browser.toLowerCase()) {
-            case "chrome" -> {
+            case "chrome":
                 return createChromeDriver();
-            }
-            case "chrome-headless" -> {
+            case "chrome-headless":
                 return createChromeDriverHeadless();
-            }
-            case "firefox" -> {
+            case "firefox":
                 return createFirefoxDriver();
-            }
-            case "edge" -> {
+            case "edge":
                 return createEdgeDriver();
-            }
-            default -> {
-            }
+            default:
+            break;
         }
         return getDriver();
     }
