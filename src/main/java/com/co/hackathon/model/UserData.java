@@ -8,35 +8,64 @@ import java.util.List;
 import java.util.Map;
 
 public class UserData {
-    private String id;
-    private String empresa;
+    private String email;
+    private String cardNumber;
+    private String monthYear;
+    private String ccv;
+    private String zip;
+    private String state;
+    private String vatNumber;
+    private String discountCode;
+
     public static List<UserData> setData(DataTable dataTable) {
-        List<UserData> dates = new ArrayList<>();
+        List<UserData> data = new ArrayList<>();
         List<Map<String, String>> mapInfo = dataTable.asMaps();
         for (Map<String, String> map : mapInfo) {
-            dates.add(new ObjectMapper().convertValue(map, UserData.class));
+            data.add(new ObjectMapper().convertValue(map, UserData.class));
         }
-        return dates;
+        return data;
     }
 
-    public UserData(String id, String empresa) {
-        this.id = id;
-        this.empresa = empresa;
+    public UserData(String email, String cardNumber, String monthYear, String ccv, String zip, String state, String vatNumber, String discountCode) {
+        this.email = email;
+        this.cardNumber = cardNumber;
+        this.monthYear = monthYear;
+        this.ccv = ccv;
+        this.zip = zip;
+        this.state = state;
+        this.vatNumber = vatNumber;
+        this.discountCode = discountCode;
     }
 
-    public String getId() {
-        return id;
+    public String getEmail() {
+        return email;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public String getMonthYear() {
+        return monthYear;
     }
 
-    public String getEmpresa() {
-        return empresa;
+    public String getCardNumber() {
+        return cardNumber;
     }
 
-    public void setEmpresa(String empresa) {
-        this.empresa = empresa;
+    public String getCcv() {
+        return ccv;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+
+    public String getDiscountCode() {
+        return discountCode;
+    }
+
+    public String getVatNumber() {
+        return vatNumber;
+    }
+
+    public String getState() {
+        return state;
     }
 }
