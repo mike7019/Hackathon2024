@@ -32,17 +32,4 @@ public class DriverThreads {
         return SelfHealingDriver.create(reportsDriver);
     }
 
-//    public static WebDriver selfHealingDriver() throws URISyntaxException, MalformedURLException {
-//        String nodeURL = "http://localhost:4444";
-//
-//        ChromeOptions options = new ChromeOptions();
-//        options.addArguments("--no-sandbox");
-//        options.addArguments("--disable-dev-shm-usage");
-//
-//        WebDriver driver = new RemoteWebDriver(new URL(nodeURL), options);
-//
-//        return SelfHealingDriver.create(driver);
-//    }
-
-
 }

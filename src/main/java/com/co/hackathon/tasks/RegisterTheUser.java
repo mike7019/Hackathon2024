@@ -33,9 +33,7 @@ public class RegisterTheUser implements Task {
                 Enter.theValue(faker.lordOfTheRings().character()).into(TXT_DISCOUNT_CODE),
                 Click.on(BTN_PAY),
                 WaitUntil.the(TXT_VALIDATE_PAYMENT, isVisible()).forNoMoreThan(10).seconds()
-                );
-        validatePayment = TXT_VALIDATE_PAYMENT.resolveFor(actor).getText();
-        actor.remember("validatePayment", validatePayment);
+        );
     }
 
     public static RegisterTheUser on() {

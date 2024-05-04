@@ -10,9 +10,10 @@ import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.ensure.Ensure;
 import net.serenitybdd.screenplay.questions.Text;
 
-import static com.co.hackathon.userInterfaces.HackathonDemoUI.TXT_VALIDATE_PAYMENT;
+import static com.co.hackathon.userinterfaces.HackathonDemoUI.TXT_VALIDATE_PAYMENT;
 import static com.co.hackathon.utils.Utils.ACTOR;
 import static com.co.hackathon.utils.Utils.URL;
+import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 
 public class HackathonDemoStepDefinitions {
 
@@ -28,6 +29,8 @@ public class HackathonDemoStepDefinitions {
     }
     @Then("I should receive a clear confirmation that my account has been successfully created")
     public void iShouldReceiveAClearConfirmationThatMyAccountHasBeenSuccessfullyCreated() {
-        Ensure.that(Text.of(TXT_VALIDATE_PAYMENT).equals(ValidatePayment.on()));
+        OnStage.theActorInTheSpotlight().should(
+                seeThat(ValidatePayment.on(TXT_VALIDATE_PAYMENT))
+        );
     }
 }
