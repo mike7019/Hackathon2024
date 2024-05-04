@@ -1,18 +1,18 @@
 #!groovy
 import java.text.SimpleDateFormat
 
-def dateFormat = new SimpleDateFormat("yyyyMMddHHmm")
+def dateFormat = new SimpleDateFormat('yyyyMMddHHmm')
 def date = new Date()
 def timestamp = dateFormat.format(date).toString()
-def CORREOS = "micorreo@gmail.com"
+
 
 pipeline {
     agent any
     stages {
         stage('Obtener Fuentes') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: "develop"]],
-                          wdoGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: "GitPerson", url: "https://github.com/mike7019/Hackathon2024.git"]]])
+                checkout([$class: 'GitSCM', branches: [[name: 'develop']],
+                          wdoGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'GitPerson', url: 'https://github.com/mike7019/Hackathon2024.git']]])
             }
         }
 
@@ -29,7 +29,8 @@ pipeline {
             steps {
                 script {
                     try {
-                        bat("gradle clean test aggregate") //Ejecución en agente windows sin parametro jenkins
+                        sh 'docker-compose -f docker-compose.yml up -d'
+                        sh 'docker-compose -f docker-compose.yml exec gradle clean test aggregate'
                         echo 'Test Ejecutados sin Fallo'
                         currentBuild.result = 'SUCCESS'
                     } catch (ex) {
@@ -44,7 +45,7 @@ pipeline {
             steps {
                 script {
                     try {
-                        bat " rename \"${WORKSPACE}\\target\" serenity_${timestamp}"
+                        sh " rename \"${WORKSPACE}\\target\" serenity_${timestamp}"
                         echo 'Backup de evidencias realizado con exito'
 
                         publishHTML([allowMissing         : false,
@@ -69,6 +70,14 @@ pipeline {
                     }
                 }
             }
+        }
+        stage('Cleanup') {
+                    steps {
+                        // Limpia los recursos, elimina el contenedor después de las pruebas
+                        script {
+                            sh 'docker-compose -f docker-compose.yml down'
+                        }
+                    }
         }
     }
 }
