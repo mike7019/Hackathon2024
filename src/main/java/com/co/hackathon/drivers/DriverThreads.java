@@ -3,18 +3,12 @@ package com.co.hackathon.drivers;
 import com.epam.healenium.SelfHealingDriver;
 import net.serenitybdd.core.Serenity;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.RemoteWebDriver;
-
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
-import java.net.URL;
 
 import static com.co.hackathon.drivers.DriversFactory.createWebDriver;
 
 public class DriverThreads {
 
-    public static WebDriver driver;
+    public static WebDriver reportsDriver;
     private static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new ThreadLocal<>();
 
     public static void setTheDriver(WebDriver driver) {
@@ -27,7 +21,7 @@ public class DriverThreads {
     }
 
     public static WebDriver selfHealerInstance(String browser) {
-        WebDriver reportsDriver = createWebDriver(browser);
+        reportsDriver = createWebDriver(browser);
         setDriverForScreenshots(reportsDriver);
         return SelfHealingDriver.create(reportsDriver);
     }

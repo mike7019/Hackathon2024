@@ -2,7 +2,6 @@ package com.co.hackathon.questions;
 
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
-import net.serenitybdd.screenplay.ensure.Ensure;
 import net.serenitybdd.screenplay.targets.Target;
 
 public class ValidatePayment implements Question<Boolean>{

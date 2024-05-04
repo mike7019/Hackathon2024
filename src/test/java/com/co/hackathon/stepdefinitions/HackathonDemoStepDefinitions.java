@@ -7,8 +7,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.actions.Open;
 import net.serenitybdd.screenplay.actors.OnStage;
-import net.serenitybdd.screenplay.ensure.Ensure;
-import net.serenitybdd.screenplay.questions.Text;
 
 import static com.co.hackathon.userinterfaces.HackathonDemoUI.TXT_VALIDATE_PAYMENT;
 import static com.co.hackathon.utils.Utils.ACTOR;

@@ -14,7 +14,6 @@ import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisi
 public class RegisterTheUser implements Task {
 
     protected Faker faker = new Faker();
-    public static String validatePayment;
 
     @Override
     public <T extends Actor> void performAs(T actor) {
