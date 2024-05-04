@@ -1,13 +1,15 @@
-#!groovy
 import java.text.SimpleDateFormat
 
 def dateFormat = new SimpleDateFormat('yyyyMMddHHmm')
 def date = new Date()
 def timestamp = dateFormat.format(date).toString()
+def time = "60"
 
 
 pipeline {
-    agent any
+    agent {
+        label "${agente}"
+    }
     stages {
         stage('Obtener Fuentes') {
             steps {
@@ -15,22 +17,22 @@ pipeline {
                           wdoGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'GitPerson', url: 'https://github.com/mike7019/Hackathon2024.git']]])
             }
         }
-
-        stage('Build Docker Image') {
-            steps {
-                // Construye la imagen Docker utilizando el archivo docker-compose.yml existente
-                script {
-                    // El comando sh ejecuta comandos de shell dentro del contenedor Docker
-                    sh 'docker-compose -f docker-compose-video.yml build'
-                }
+        stage('Start Containers'){
+            steps{
+                sh ('docker-compose -f docker-compose-video.yml up -d')
+            }
+        }
+        stage ("wait") {
+            steps{
+                echo "Waiting 60 seconds for deployment to complete "
+                sleep time.toInteger() // seconds
             }
         }
         stage('Run Test') {
             steps {
                 script {
                     try {
-                        sh 'docker-compose -f docker-compose.yml up -d'
-                        sh 'docker-compose -f docker-compose.yml exec gradle clean test aggregate'
+                        sh './gradlew clean test -Dtags="${tags}" -Denvironment=${ambiente}'
                         echo 'Test Ejecutados sin Fallo'
                         currentBuild.result = 'SUCCESS'
                     } catch (ex) {
@@ -41,7 +43,7 @@ pipeline {
             }
         }
 
-        stage('Generar evidencia') {
+        stage('Publish Results') {
             steps {
                 script {
                     try {
