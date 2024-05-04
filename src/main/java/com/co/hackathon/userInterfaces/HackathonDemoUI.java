@@ -13,7 +13,7 @@ public class HackathonDemoUI {
     public static final Target TXT_CCV = Target.the("CCV")
             .located(By.name("cvv"));
     public static final Target TXT_CARDHOLDER = Target.the("CARDHOLDER")
-            .located(By.id("cardtest"));
+            .located(By.cssSelector("div.my-3.cardname > input.form-control"));
     public static final Target BTN_COUNTRY = Target.the("COUNTRY")
             .located(By.id("billingAddress"));
     public static final Target SEL_COUNTRY = Target.the("SELECT COUNTRY")
@@ -25,7 +25,7 @@ public class HackathonDemoUI {
     public static final Target TXT_VAT_NUMBER = Target.the("VAT NUMBER")
             .located(By.id("vatNumber"));
     public static final Target TXT_DISCOUNT_CODE = Target.the("DISCOUNT CODE")
-            .located(By.id("discountCode"));
+            .located(By.cssSelector("input.form-control.text-uppercase"));
     public static final Target BTN_PAY = Target.the("PAY BUTTON")
             .located(By.id("payButton"));
     public static final Target TXT_VALIDATE_PAYMENT = Target.the("VALIDATE PAYMENT")
