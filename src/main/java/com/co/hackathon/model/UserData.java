@@ -8,14 +8,14 @@ import java.util.List;
 import java.util.Map;
 
 public class UserData {
-    private String email;
-    private String cardNumber;
-    private String monthYear;
-    private String ccv;
-    private String zip;
-    private String state;
-    private String vatNumber;
-    private String discountCode;
+    private final String email;
+    private final String cardNumber;
+    private final String monthYear;
+    private final String ccv;
+    private final String zip;
+    private final String state;
+    private final String vatNumber;
+    private final String discountCode;
 
     public static List<UserData> setData(DataTable dataTable) {
         List<UserData> data = new ArrayList<>();
