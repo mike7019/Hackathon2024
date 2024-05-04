@@ -1,15 +1,11 @@
 package com.co.hackathon.stepdefinitions;
 
-import com.co.hackathon.model.UserData;
-import com.co.hackathon.tasks.HackathonDemoTask;
-import io.cucumber.datatable.DataTable;
+import com.co.hackathon.tasks.RegisterTheUser;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.actions.Open;
 import net.serenitybdd.screenplay.actors.OnStage;
-
-import java.util.List;
 
 import static com.co.hackathon.utils.Utils.ACTOR;
 import static com.co.hackathon.utils.Utils.URL;
@@ -22,8 +18,10 @@ public class HackathonDemoStepDefinitions {
     }
 
     @When("he attempts to register the user")
-    public void heAttemptsToRegisterTheUser(UserData userData) {
-        OnStage.theActorCalled(ACTOR).attemptsTo(HackathonDemoTask.withUserData(userData));
+    public void heAttemptsToRegisterTheUser() {
+        OnStage.theActorInTheSpotlight().attemptsTo(
+                RegisterTheUser.on()
+        );
     }
 
     @Then("I should receive a clear confirmation that my account has been successfully created")

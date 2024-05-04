@@ -3,9 +3,13 @@ package com.co.hackathon.drivers;
 import com.epam.healenium.SelfHealingDriver;
 import net.serenitybdd.core.Serenity;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
-import static com.co.hackathon.drivers.DriversFactory.createWebDriver;
-import static com.co.hackathon.utils.Utils.CHROME;
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.URL;
 
 public class DriverThreads {
 
@@ -21,9 +25,22 @@ public class DriverThreads {
         Serenity.getWebdriverManager().setCurrentDriver(driver);
     }
 
-    public static WebDriver selfHealingDriver(String browser) {
-        driver = createWebDriver(browser);
-        DriverThreads.setDriverForScreenshots(driver);
+//    public static WebDriver selfHealingDriver(String browser) {
+//        driver = new RemoteWebDriver();
+//        DriverThreads.setDriverForScreenshots(driver);
+//        return SelfHealingDriver.create(driver);
+//    }
+
+    public static WebDriver selfHealingDriver(String browser) throws URISyntaxException, MalformedURLException {
+        String nodeURL = "http://localhost:4444";
+
+        DesiredCapabilities options = new DesiredCapabilities();
+        options.setBrowserName(browser);
+
+        WebDriver driver = new RemoteWebDriver(new URL(nodeURL), options);
+
         return SelfHealingDriver.create(driver);
     }
+
+
 }
