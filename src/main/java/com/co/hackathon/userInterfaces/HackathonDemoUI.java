@@ -5,15 +5,15 @@ import org.openqa.selenium.By;
 
 public class HackathonDemoUI {
     public static final Target TXT_EMAIL = Target.the("EMAIL")
-            .located(By.id("email"));
+            .locatedBy("//input[@name='emailAddress']");
     public static final Target TXT_CARD_NUMBER = Target.the("CARD NUMBER")
-            .located(By.id("cardNumber"));
+            .locatedBy("//input[@placeholder='card number']");
     public static final Target TXT_MONTH_YEAR = Target.the("MONTH/YEAR")
             .located(By.name("expiryDate"));
     public static final Target TXT_CCV = Target.the("CCV")
             .located(By.name("cvv"));
     public static final Target TXT_CARDHOLDER = Target.the("CARDHOLDER")
-            .located(By.id("cardHolder"));
+            .located(By.id("cardtest"));
     public static final Target BTN_COUNTRY = Target.the("COUNTRY")
             .located(By.id("billingAddress"));
     public static final Target SEL_COUNTRY = Target.the("SELECT COUNTRY")
