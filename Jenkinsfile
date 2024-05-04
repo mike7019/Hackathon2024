@@ -37,7 +37,7 @@ pipeline {
                 script {
                     def backupDir = "${WORKSPACE}\\target".replace('\\', '/')
                     def timestampDir = "serenity_${timestamp}"
-                    def targetDir = "${WORKSPACE}/${timestampDir}/site/serenity"
+                    def targetDir = "${WORKSPACE}/${timestampDir}"
 
                     try {
                         bat "rename \"${backupDir}\" ${timestampDir}"
