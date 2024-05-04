@@ -35,16 +35,20 @@ pipeline {
         stage('Generate Reports') {
             steps {
                 script {
+                    def backupDir = "${WORKSPACE}\\target".replace('\\', '/')
+                    def timestampDir = "serenity_${timestamp}"
+                    def targetDir = "${WORKSPACE}/${timestampDir}/site/serenity"
+
                     try {
-                        bat " rename \"${WORKSPACE}\\target\" serenity_${timestamp}"
+                        bat "rename \"${backupDir}\" ${timestampDir}"
                         echo 'evidences backed up successfully'
 
                         publishHTML([allowMissing         : false,
                                      alwaysLinkToLastBuild: true,
                                      keepAll              : true,
-                                     reportDir            : "${WORKSPACE}//serenity_${timestamp}/site/serenity",
+                                     reportDir            : targetDir,
                                      reportFiles          : 'index.html',
-                                     reportName           : 'Evidences Hackaton ',
+                                     reportName           : 'Evidences Hackaton',
                                      reportTitles         : 'Project Hackaton Screenplay'])
                         echo 'HTML report generated successfully'
                     } catch (e) {
@@ -52,9 +56,9 @@ pipeline {
                         publishHTML([allowMissing         : false,
                                      alwaysLinkToLastBuild: true,
                                      keepAll              : true,
-                                     reportDir            : "${WORKSPACE}//target/serenity_${timestamp}",
+                                     reportDir            : "${WORKSPACE}/target/${timestampDir}",
                                      reportFiles          : 'index.html',
-                                     reportName           : 'Evidences Hackaton ',
+                                     reportName           : 'Evidences Hackaton',
                                      reportTitles         : 'Project Hackaton Screenplay'])
                         echo 'HTML report generated successfully'
                         currentBuild.result = 'SUCCESS'
