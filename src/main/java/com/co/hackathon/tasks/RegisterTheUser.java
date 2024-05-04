@@ -3,13 +3,12 @@ package com.co.hackathon.tasks;
 import com.github.javafaker.Faker;
 import net.serenitybdd.core.steps.Instrumented;
 import net.serenitybdd.screenplay.Actor;
-import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.waits.WaitUntil;
 
-import static com.co.hackathon.userInterfaces.HackathonDemoUI.*;
+import static com.co.hackathon.userinterfaces.HackathonDemoUI.*;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 
 public class RegisterTheUser implements Task {
