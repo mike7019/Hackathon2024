@@ -5,27 +5,29 @@ import org.openqa.selenium.By;
 
 public class HackathonDemoUI {
     public static final Target TXT_EMAIL = Target.the("EMAIL")
-            .located(By.xpath("//input[@type='email']"));
+            .located(By.id("email"));
     public static final Target TXT_CARD_NUMBER = Target.the("CARD NUMBER")
-            .located(By.xpath("//input[@placeholder='numero de tarjeta']"));
+            .located(By.id("cardNumber"));
     public static final Target TXT_MONTH_YEAR = Target.the("MONTH/YEAR")
-            .located(By.xpath("//input[@placeholder='MM/YY']"));
+            .located(By.name("expiryDate"));
     public static final Target TXT_CCV = Target.the("CCV")
-            .located(By.xpath("//input[@placeholder='CVV']"));
+            .located(By.name("cvv"));
     public static final Target TXT_CARDHOLDER = Target.the("CARDHOLDER")
-            .located(By.xpath("//input[@placeholder='titular']"));
+            .located(By.id("cardHolder"));
     public static final Target BTN_COUNTRY = Target.the("COUNTRY")
-            .located(By.xpath("//select[@class='form-select']"));
+            .located(By.id("billingAddress"));
+    public static final Target SEL_COUNTRY = Target.the("SELECT COUNTRY")
+            .located(By.xpath("//option[@value='2']"));
     public static final Target TXT_ZIP = Target.the("ZIP")
-            .located(By.xpath("//input[@placeholder='ZIP']"));
+            .located(By.id("zipCode"));
     public static final Target TXT_STATE = Target.the("STATE")
-            .located(By.xpath("//input[@placeholder='State']"));
+            .located(By.id("state"));
     public static final Target TXT_VAT_NUMBER = Target.the("VAT NUMBER")
-            .located(By.xpath("//div[3]/div[2]/div/input"));
+            .located(By.id("vatNumber"));
     public static final Target TXT_DISCOUNT_CODE = Target.the("DISCOUNT CODE")
-            .located(By.id("discount"));
+            .located(By.id("discountCode"));
     public static final Target BTN_PAY = Target.the("PAY BUTTON")
             .located(By.id("payButton"));
     public static final Target TXT_VALIDATE_PAYMENT = Target.the("VALIDATE PAYMENT")
-            .located(By.xpath("//div[3]/div[2]/div/input"));
+            .located(By.xpath("//div[contains(text(),'Data saved successfully.!')]"));
 }
